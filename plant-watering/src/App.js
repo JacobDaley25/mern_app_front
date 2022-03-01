@@ -11,7 +11,7 @@ const App = () => {
 
   useEffect(()=>{
     axios
-      .get('http://localhost:3000/plants')
+      .get('https://plantwateringapi.herokuapp.com/plants')
       .then((response)=>{
         setPlants(response.data)
     })
@@ -20,7 +20,7 @@ const App = () => {
   const handleNewFormSubmit = (event) => {
     event.preventDefault();
     axios.post(
-      'http://localhost:3000/plants',
+      'https://plantwateringapi.herokuapp.com/plants',
       {
         name: newName,
         image: newImage,
@@ -28,7 +28,7 @@ const App = () => {
         wasWatered: newWatered
       }).then((response)=>{
         axios
-          .get('http://localhost:3000/plants')
+          .get('https://plantwateringapi.herokuapp.com/plants')
           .then((response)=>{
             setPlants(response.data)
         })
@@ -37,10 +37,10 @@ const App = () => {
 
   const handleDelete = (plantData) => {
     axios
-      .delete(`http://localhost:3000/plants/${plantData._id}`)
+      .delete(`https://plantwateringapi.herokuapp.com/plants/${plantData._id}`)
       .then(() => {
           axios
-            .get('http://localhost:3000/plants')
+            .get('https://plantwateringapi.herokuapp.com/plants')
             .then((response) => {
               setPlants(response.data)
             })
@@ -49,7 +49,7 @@ const App = () => {
 
   const handleToggleWatered = (plantData) => {
     axios
-      .put(`http://localhost:3000/plants/${plantData._id}`,
+      .put(`https://plantwateringapi.herokuapp.com/plants/${plantData._id}`,
         {
           name: plantData.name,
           image: plantData.image,
@@ -59,7 +59,7 @@ const App = () => {
       )
       .then(() => {
         axios
-          .get('http://localhost:3000/plants')
+          .get('https://plantwateringapi.herokuapp.com/plants')
           .then((response) => {
             setPlants(response.data)
           })
@@ -93,11 +93,11 @@ const App = () => {
       </form>
     </section>
     <section>
-    <h2>Plants!</h2>
+    <h2>Your Plants!</h2>
       {
         plants.map((plant)=>{
           return <div key={plant._id}>
-            <h1>{plant.name}</h1>
+            <h3>{plant.name}</h3>
             <p>{plant.description}</p>
             <p onClick={ (event)=>{ handleToggleWatered(plant) }}>
             {
