@@ -8,6 +8,7 @@ const App = () => {
   const [newDescription, setNewDescription] = useState('')
   const [newWatered, setNewWatered] = useState(false)
   const [plants, setPlants] = useState([])
+  const [newCheck, setNewCheck] = useState(false)
 
   useEffect(()=>{
     axios
@@ -66,6 +67,14 @@ const App = () => {
       })
   }
 
+  const changeNewCheck = () => {
+    setNewCheck(true)
+  }
+
+  const closeNewCheck = () => {
+    setNewCheck(false)
+  }
+
   const handleNewNameChange = (event) => {
     setNewName(event.target.value)
   }
@@ -81,16 +90,21 @@ const App = () => {
 
   return (
     <div>
-    <h1>Plants List</h1>
+    <h1>Plants In My Garden</h1>
     <section>
       <h2>Add a New Plant</h2>
-      <form className="form" onSubmit={handleNewFormSubmit}>
+      <button onClick={ (event) => {
+        changeNewCheck(plants)}}>Add A New Plant</button>
+        <button onClick={ (event) => {
+          closeNewCheck(plants)}}>Close</button>
+      {newCheck ? (<form className="form" onSubmit={handleNewFormSubmit}>
         Name: <input type="text" onChange={handleNewNameChange}/><br/>
         Image: <input type="text" onChange={handleNewImageChange}/><br/>
         Description: <input type="text" onChange={handleNewDescriptionChange}/><br/>
         Watered: <input type="checkbox" onChange={handleNewWateredChange}/><br/>
         <input type="submit" value="Add Plant"/>
-      </form>
+      </form>) : null
+      }
     </section>
     <section>
     <h2>Your Plants!</h2>
