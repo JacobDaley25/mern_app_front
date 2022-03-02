@@ -84,7 +84,7 @@ const App = () => {
     <h1>Plants List</h1>
     <section>
       <h2>Add a New Plant</h2>
-      <form onSubmit={handleNewFormSubmit}>
+      <form className="form" onSubmit={handleNewFormSubmit}>
         Name: <input type="text" onChange={handleNewNameChange}/><br/>
         Image: <input type="text" onChange={handleNewImageChange}/><br/>
         Description: <input type="text" onChange={handleNewDescriptionChange}/><br/>
@@ -94,9 +94,10 @@ const App = () => {
     </section>
     <section>
     <h2>Your Plants!</h2>
+    <div className="cardgrid">
       {
         plants.map((plant)=>{
-          return <div key={plant._id}>
+          return <div className="plantcard" key={plant._id}>
             <h3>{plant.name}</h3>
             <p>{plant.description}</p>
             <p onClick={ (event)=>{ handleToggleWatered(plant) }}>
@@ -107,11 +108,12 @@ const App = () => {
                 'does not need water'
             } <br/>
             </p>
-            <img src={plant.image}/><br/>
+            <img className="plantimg" src={plant.image}/><br/>
             <button onClick={ (event)=>{ handleDelete(plant) } }>Delete Plant</button>
           </div>
         })
       }
+      </div>
     </section>
   </div>
 )}
