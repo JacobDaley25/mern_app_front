@@ -90,31 +90,31 @@ const App = () => {
 
   return (
     <div>
-    <h1>Plants In My Garden</h1>
+    <h1>Plant₂0</h1>
     <section>
-      <h2>Add a New Plant</h2>
+      <h2></h2>
       <button onClick={ (event) => {
         changeNewCheck(plants)}}>Add A New Plant</button>
         <button onClick={ (event) => {
-          closeNewCheck(plants)}}>Close</button>
+          closeNewCheck(plants)}}>Close Plant Form</button>
       {newCheck ? (<form className="form" onSubmit={handleNewFormSubmit}>
         Name: <input type="text" onChange={handleNewNameChange}/><br/>
         Image: <input type="text" onChange={handleNewImageChange}/><br/>
         Description: <input type="text" onChange={handleNewDescriptionChange}/><br/>
-        Watered: <input type="checkbox" onChange={handleNewWateredChange}/><br/>
+        Needs to be Watered?: <input type="checkbox" onChange={handleNewWateredChange}/><br/>
         <input type="submit" value="Add Plant"/>
       </form>) : null
       }
     </section>
     <section>
-    <h2>Your Plants!</h2>
+    <h2>Plants In My Garden</h2>
     <div className="cardgrid">
       {
         plants.map((plant)=>{
           return <div className="plantcard" key={plant._id}>
-            <h3>{plant.name}</h3>
-            <p>{plant.description}</p>
-            <p onClick={ (event)=>{ handleToggleWatered(plant) }}>
+            <h3 className="textdata">{plant.name}</h3>
+            <p className="textdata">{plant.description}</p>
+            <p className="textdata" onClick={ (event)=>{ handleToggleWatered(plant) }}>
             {
               (plant.wasWatered)?
                 'needs water'
