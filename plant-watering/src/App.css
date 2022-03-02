@@ -1,38 +1,75 @@
-.App {
+* {
   text-align: center;
+  background-color: #DDE5B6;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button {
+  background: #DDE5B6;
+ background-image: -webkit-linear-gradient(top, #DDE5B6, #ADC178);
+ background-image: -moz-linear-gradient(top, #DDE5B6, #ADC178);
+ background-image: -ms-linear-gradient(top, #DDE5B6, #ADC178);
+ background-image: -o-linear-gradient(top, #DDE5B6, #ADC178);
+ background-image: linear-gradient(to bottom, #DDE5B6, #ADC178);
+ -webkit-border-radius: 5;
+ -moz-border-radius: 5;
+ border-radius: 5px;
+ text-shadow: 1px 1px 3px #F0EAD2;
+ font-family: Arial;
+ color: #6C584C;
+ font-size: 20px;
+ padding: 5px 10px 5px 10px;
+ border: solid #A98467 4px;
+ text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button:hover {
+  background: #cfb5a2;
+  text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form {
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 1.5em;
+}
+
+input[type=text] {
+  width: 50%;
+  padding: 5px 10px;
+  margin: 1em;
+  box-sizing: border-box;
+}
+
+.textdata {
+  background-color: #F0EAD2
+}
+
+.cardgrid {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.plantcard {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 400px;
+  width: 20%;
+  margin: 3em;
+  box-shadow: 5px 5px 15px 5px #000000;
+  align-content: center;
+  padding: 1em;
+  background-color: #F0EAD2;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.plantimg {
+  flex-direction: wrap;
+  align-self: center;
+  width: 70%;
+  padding-bottom: 1em;
+  object-fit: contain;
+  background-color: #F0EAD2;
+  /* box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.39);
+  border: 1px solid grey; */
 }
