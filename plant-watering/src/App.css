@@ -2,7 +2,7 @@
   text-align: center;
   background-color: #DDE5B6;
 }
-
+/* button styling */
 button {
   background: #DDE5B6;
  background-image: -webkit-linear-gradient(top, #DDE5B6, #ADC178);
@@ -20,6 +20,7 @@ button {
  padding: 5px 10px 5px 10px;
  border: solid #A98467 4px;
  text-decoration: none;
+ margin: 0em 1em;
 }
 
 button:hover {
@@ -27,21 +28,52 @@ button:hover {
   text-decoration: none;
 }
 
-.form {
-  margin: 0 auto;
-  padding: 10px;
-  font-size: 1.5em;
-}
-
+/* ADD NEW FLOWER input fields styling */
 input[type=text] {
   width: 50%;
   padding: 5px 10px;
   margin: 1em;
   box-sizing: border-box;
+  border: 2px solid #6C584C;
+  border-radius: 4px;
+  background-color: #F0EAD2;
+}
+.form {
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 1.5em;
+}
+input[type=submit] {
+  background: #DDE5B6;
+ background-image: -webkit-linear-gradient(top, #DDE5B6, #ADC178);
+ background-image: -moz-linear-gradient(top, #DDE5B6, #ADC178);
+ background-image: -ms-linear-gradient(top, #DDE5B6, #ADC178);
+ background-image: -o-linear-gradient(top, #DDE5B6, #ADC178);
+ background-image: linear-gradient(to bottom, #DDE5B6, #ADC178);
+ -webkit-border-radius: 5;
+ -moz-border-radius: 5;
+ border-radius: 5px;
+ text-shadow: 1px 1px 3px #F0EAD2;
+ font-family: Arial;
+ color: #6C584C;
+ font-size: 20px;
+ padding: 5px 10px 5px 10px;
+ border: solid #A98467 4px;
+ text-decoration: none;
+}
+input[type=submit]:hover {
+  background: #cfb5a2;
+  text-decoration: none;
 }
 
+/* ADDED FLOWERS plants we have added styling */
 .textdata {
-  background-color: #F0EAD2
+  background-color: #F0EAD2;
+}
+
+.description {
+  background-color: #F0EAD2;
+  overflow-wrap: break-word;
 }
 
 .cardgrid {
@@ -64,6 +96,7 @@ input[type=text] {
 }
 
 .plantimg {
+  display: flex;
   flex-direction: wrap;
   align-self: center;
   width: 70%;

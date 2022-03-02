@@ -113,7 +113,7 @@ const App = () => {
         plants.map((plant)=>{
           return <div className="plantcard" key={plant._id}>
             <h3 className="textdata">{plant.name}</h3>
-            <p className="textdata">{plant.description}</p>
+            <p className="description">{plant.description}</p>
             <p className="textdata" onClick={ (event)=>{ handleToggleWatered(plant) }}>
             {
               (plant.wasWatered)?
