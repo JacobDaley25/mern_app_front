@@ -94,6 +94,8 @@ const App = () => {
     <h1>Plant₂0</h1>
     <section>
       <h2></h2>
+      <button onClick={Register}>Sign Up</button>
+
       <button onClick={ (event) => {
         changeNewCheck(plants)}}>Add A New Plant</button>
         <button onClick={ (event) => {
