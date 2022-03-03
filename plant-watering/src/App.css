@@ -38,6 +38,15 @@ input[type=text] {
   border-radius: 4px;
   background-color: #F0EAD2;
 }
+input[type=password] {
+  width: 50%;
+  padding: 5px 10px;
+  margin: 1em;
+  box-sizing: border-box;
+  border: 2px solid #6C584C;
+  border-radius: 4px;
+  background-color: #F0EAD2;
+}
 .form {
   margin: 0 auto;
   padding: 10px;
@@ -105,4 +114,8 @@ input[type=submit]:hover {
   background-color: #F0EAD2;
   /* box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.39);
   border: 1px solid grey; */
+}
+
+.plantimg {
+
 }
