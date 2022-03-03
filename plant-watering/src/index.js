@@ -8,7 +8,7 @@ import Register from './Register'
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <Register />
+    
   </React.StrictMode>,
   document.getElementById('root')
 );

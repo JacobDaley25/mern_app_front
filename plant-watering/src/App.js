@@ -1,7 +1,7 @@
 import './App.css';
 import {useState, useEffect} from 'react'
 import axios from 'axios'
-import Register from './Register.js'
+import Register from './Register'
 
 const App = () => {
   const [newName, setNewName] = useState('')
@@ -119,11 +119,12 @@ const App = () => {
     <section>
       <h2></h2>
       <button onClick={openRegister}> Sign Up </button>
+
       <button onClick={showPlantInfo}>Plant Info</button>
       <button onClick={gotoHome}>Home</button>
       <button onClick={ (event) => {
         changeNewCheck(plants)}}>Add A New Plant</button>
-
+        {registerCheck ? (<Register />):null}
       {newCheck ? (<form className="form" onSubmit={handleNewFormSubmit}>
         Name: <input type="text" onChange={handleNewNameChange}/><br/>
         Image: <input type="text" onChange={handleNewImageChange}/><br/>
