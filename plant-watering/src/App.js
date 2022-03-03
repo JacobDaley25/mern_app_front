@@ -1,7 +1,7 @@
 import './App.css';
 import {useState, useEffect} from 'react'
 import axios from 'axios'
-import Register from './Register'
+import Register from './Register.js'
 
 const App = () => {
   const [newName, setNewName] = useState('')
