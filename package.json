@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/free-solid-svg-icons": "^6.0.0",
     "@fortawesome/react-fontawesome": "github:fortawesome/react-fontawesome",
     "fontawesome": "^5.6.3"
   }
