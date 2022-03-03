@@ -1,7 +1,8 @@
 import {useRef, useState, useEffect} from 'react'
-import {faCheck, faTimes, faInfoCircle} from 'fontawesome'
+import {faCheck, faTimes, faInfoCircle} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import axios from './api/axios.js'
+import axios from 'axios'
+
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_].{3,23}$/gm;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/gm;
@@ -60,11 +61,11 @@ const Register = () => {
       return
     }
     try{
-      const response = await axios.post(REGISTER_URL, JSON.stringify({username:user, password:pwd}),
-    {
-      headers: {'content-type' : 'application/json'},
-      withCredentials: true
-    }
+      const response = await axios.post('https://plantwateringapi.herokuapp.com/users', {
+        username: user,
+        password: pwd
+      }
+
   )
       console.log(response.data);
       setSuccess(true)
@@ -172,7 +173,7 @@ const Register = () => {
           Must match the first password input field.
         </p>
 
-        <button  type='submit' disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
+        <button  type='submit'>Sign Up</button>
       </form>
       <p>
       Already Redistered?<br />
