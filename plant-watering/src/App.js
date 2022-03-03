@@ -10,6 +10,8 @@ const App = () => {
   const [newWatered, setNewWatered] = useState(false)
   const [plants, setPlants] = useState([])
   const [newCheck, setNewCheck] = useState(false)
+  const [infoPlants, setInfoPlants] = useState([])
+  const [registerCheck, setRegisterCheck] = useState(false)
 
   useEffect(()=>{
     axios
@@ -19,6 +21,28 @@ const App = () => {
     })
   }, [])
 
+  const openRegister = () => {
+    setPlants([])
+    setRegisterCheck(true)
+  }
+  const gotoHome = () => {
+    setInfoPlants([])
+    setRegisterCheck(false)
+    axios
+      .get('https://plantwateringapi.herokuapp.com/plants')
+      .then((response)=>{
+        setPlants(response.data)
+      })
+  }
+  const showPlantInfo = () => {
+    setPlants([])
+    axios
+      .get('https://www.growstuff.org/gardens.json')
+      .then((response)=>{
+        setInfoPlants(response.data)
+      })
+
+  }
   const handleNewFormSubmit = (event) => {
     event.preventDefault();
     axios.post(
@@ -94,17 +118,20 @@ const App = () => {
     <h1>Plant₂0</h1>
     <section>
       <h2></h2>
-      <button onClick={Register}>Sign Up</button>
+      <button onClick={openRegister}> Sign Up </button>
+      <button onClick={showPlantInfo}>Plant Info</button>
+      <button onClick={gotoHome}>Home</button>
       <button onClick={ (event) => {
         changeNewCheck(plants)}}>Add A New Plant</button>
-        <button onClick={ (event) => {
-          closeNewCheck(plants)}}>Close Plant Form</button>
+
       {newCheck ? (<form className="form" onSubmit={handleNewFormSubmit}>
         Name: <input type="text" onChange={handleNewNameChange}/><br/>
         Image: <input type="text" onChange={handleNewImageChange}/><br/>
         Description: <input type="text" onChange={handleNewDescriptionChange}/><br/>
         Needs to be Watered?: <input type="checkbox" onChange={handleNewWateredChange}/><br/>
         <input type="submit" value="Add Plant"/>
+        <button onClick={ (event) => {
+          closeNewCheck(plants)}}>Close Plant Form</button>
       </form>) : null
       }
     </section>
