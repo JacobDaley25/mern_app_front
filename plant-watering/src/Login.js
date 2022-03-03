@@ -27,18 +27,34 @@ const Login = () => {
     e.preventDefault()
 
     try {
-        const response = await axios.post(LOGIN_URL,
+      const response = await axios.post(LOGIN_URL,
           JSON.stringify({user, pwd}),
           {
-            headers: { 'Content-Type': 'application/json'},
-            withCredentials: true
+            username: user,
+            password: pwd
           }
-        )
+      )
+      console.log(JSON.stringify(response?.data));
+        // console.log(JSON.stringify(response));
+      const accessToken = response?.data?.accessToken
+      const roles = response?.data?.roles
+      setAuth({ user, pwd, roles, accessToken })
       setUser()
       setPwd()
       setSuccess(true)
     } catch (err) {
-
+      if (!err?.response) {
+        setErrMsg('Something went wrong...')
+      } else if (err.response?.status === 400) {
+        // 400 = information that was expected is not being received
+        setErrMsg('Missing Username or Password')
+      } else if (err.response?.status === 401) {
+        // 401 = unauthorized
+        setErrMsg('Unauthorized')
+      } else {
+        setErrMsg('Login Attempt Failed')
+      }
+      errRef.current.focus()
     }
 
   }
@@ -47,7 +63,7 @@ const Login = () => {
     <>
       {success ? (
         <section>
-          <h1>You are now loged in!</h1>
+          <h1>You are now logged in!</h1>
           <br/>
           <p>
             <a href="#">Go to Home</a>
