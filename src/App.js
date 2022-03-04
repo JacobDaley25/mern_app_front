@@ -29,11 +29,13 @@ const App = () => {
   }
   const openRegister = () => {
     setPlants([])
+    setLoginCheck(false)
     setRegisterCheck(true)
   }
   const gotoHome = () => {
     setInfoPlants([])
     setRegisterCheck(false)
+    setLoginCheck(false)
     axios
       .get('https://plantwateringapi.herokuapp.com/plants')
       .then((response)=>{
@@ -42,6 +44,8 @@ const App = () => {
   }
   const showPlantInfo = () => {
     setPlants([])
+    setRegisterCheck(false)
+    setLoginCheck(false)
     axios
       .get('growstuff.org/crops.json')
       .then((response)=>{
