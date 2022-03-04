@@ -13,6 +13,7 @@ const App = () => {
   const [newCheck, setNewCheck] = useState(false)
   const [infoPlants, setInfoPlants] = useState([])
   const [registerCheck, setRegisterCheck] = useState(false)
+  const [loginCheck, setLoginCheck] = useState(false)
 
   useEffect(()=>{
     axios.get('https://plantwateringapi.herokuapp.com/plants')
@@ -21,6 +22,12 @@ const App = () => {
     })
   }, [])
 
+  const openLogin = () => {
+    setPlants([])
+    setRegisterCheck(false)
+    setInfoPlants(false)
+    setLoginCheck(true)
+  }
   const openRegister = () => {
     setPlants([])
     setRegisterCheck(true)
@@ -119,12 +126,13 @@ const App = () => {
     <section>
       <h2></h2>
       <button onClick={openRegister}> Sign Up </button>
-
+      <button onCLick={openLogin}>Login!</button>
       <button onClick={showPlantInfo}>Plant Info</button>
       <button onClick={gotoHome}>Home</button>
       <button onClick={ (event) => {
         changeNewCheck(plants)}}>Add A New Plant</button>
         {registerCheck ? (<Register />):null}
+        {loginCheck ? (<Login />):null}
       {newCheck ? (<form className="form" onSubmit={handleNewFormSubmit}>
         Name: <input type="text" onChange={handleNewNameChange}/><br/>
         Image: <input type="text" onChange={handleNewImageChange}/><br/>
