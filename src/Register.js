@@ -176,7 +176,7 @@ const Register = () => {
         <button  type='submit'>Sign Up</button>
       </form>
       <p>
-      Already Redistered?<br />
+      Already Registered?<br />
       <span className='line'>
         <a href='#'>Sign In</a>
       </span>

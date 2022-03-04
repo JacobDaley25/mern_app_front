@@ -1,5 +1,7 @@
 import {useRef, useState, useEffect, useContext} from 'react'
 import AuthContext from "./context/AuthProvider"
+import './App.js'
+import './Register'
 
 import axios from 'axios'
 const LOGIN_URL = '/auth'
@@ -36,7 +38,7 @@ const Login = () => {
       console.log(JSON.stringify(response?.data));
         // console.log(JSON.stringify(response));
 
-      
+
       setUser('')
       setPwd('')
       setSuccess(true)
@@ -65,7 +67,7 @@ const Login = () => {
           <h1>You are now logged in!</h1>
           <br/>
           <p>
-            <a href="#">Go to Home</a>
+            <a href="/">Go to Home</a>
           </p>
         </section>
       ) : (
