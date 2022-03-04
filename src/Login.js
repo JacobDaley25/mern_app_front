@@ -1,4 +1,4 @@
-import {useRef, useState, useEffect, useContext} from 'react'
+iimport {useRef, useState, useEffect, useContext} from 'react'
 import AuthContext from "./context/AuthProvider"
 
 import axios from 'axios'
@@ -35,16 +35,13 @@ const Login = () => {
       )
       console.log(JSON.stringify(response?.data));
         // console.log(JSON.stringify(response));
-      const accessToken = response?.data?.accessToken
       const roles = response?.data?.roles
-      setAuth({ user, pwd, roles, accessToken })
+      setAuth({ user, pwd})
       setUser()
       setPwd()
       setSuccess(true)
     } catch (err) {
-      if (!err?.response) {
-        setErrMsg('Something went wrong...')
-      } else if (err.response?.status === 400) {
+        if (err.response?.status === 400) {
         // 400 = information that was expected is not being received
         setErrMsg('Missing Username or Password')
       } else if (err.response?.status === 401) {
