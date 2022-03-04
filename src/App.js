@@ -125,7 +125,7 @@ const App = () => {
     <section>
       <h2></h2>
       <button onClick={openRegister}> Sign Up </button>
-      <button onCLick={openLogin}>Login!</button>
+      <button onClick={openLogin}>Login!</button>
       <button onClick={showPlantInfo}>Plant Info</button>
       <button onClick={gotoHome}>Home</button>
       <button onClick={ (event) => {
