@@ -14,8 +14,7 @@ const App = () => {
   const [registerCheck, setRegisterCheck] = useState(false)
 
   useEffect(()=>{
-    axios
-      .get('https://plantwateringapi.herokuapp.com/plants')
+    axios.get('https://plantwateringapi.herokuapp.com/plants')
       .then((response)=>{
         setPlants(response.data)
     })
@@ -37,7 +36,7 @@ const App = () => {
   const showPlantInfo = () => {
     setPlants([])
     axios
-      .get('https://www.growstuff.org/gardens.json')
+      .get('growstuff.org/crops.json')
       .then((response)=>{
         setInfoPlants(response.data)
       })
@@ -140,8 +139,9 @@ const App = () => {
     <h2>Plants In My Garden</h2>
     <div className="cardgrid">
       {
+
         plants.map((plant)=>{
-          return <div className="plantcard" key={plant._id}>
+          return<div className="plantcard" key={plant._id}>
             <h3 className="textdata">{plant.name}</h3>
             <p className="description">{plant.description}</p>
             <p className="textdata" onClick={ (event)=>{ handleToggleWatered(plant) }}>
@@ -155,11 +155,13 @@ const App = () => {
             <img className="plantimg" src={plant.image}/><br/>
             <button onClick={ (event)=>{ handleDelete(plant) } }>Delete Plant</button>
           </div>
+
         })
       }
       </div>
     </section>
   </div>
+
 )}
 
 export default App
