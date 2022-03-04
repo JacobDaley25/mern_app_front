@@ -40,10 +40,11 @@ const Login = () => {
       setUser()
       setPwd()
       setSuccess(true)
-    } catch (err) {if (!err?.response) {
+    } catch (err) {
+      if (!err?.response) {
                 setErrMsg('No Server Response');
             }
-        if (err.response?.status === 400) {
+        else if (err.response?.status === 400) {
         // 400 = information that was expected is not being received
         setErrMsg('Missing Username or Password')
       } else if (err.response?.status === 401) {
