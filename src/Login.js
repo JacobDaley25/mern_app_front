@@ -41,18 +41,18 @@ const Login = () => {
       setPwd()
       setSuccess(true)
     } catch (err) {
-      if (!err?.response) {
-                setErrMsg('No Server Response');
-            }
-        else if (err.response?.status === 400) {
-        // 400 = information that was expected is not being received
-        setErrMsg('Missing Username or Password')
-      } else if (err.response?.status === 401) {
-        // 401 = unauthorized
-        setErrMsg('Unauthorized')
-      } else {
-        setErrMsg('Login Attempt Failed')
-      }
+      // if (!err?.response) {
+      //           setErrMsg('No Server Response');
+      //       }
+      //   else if (err.response?.status === 400) {
+      //   // 400 = information that was expected is not being received
+      //   setErrMsg('Missing Username or Password')
+      // } else if (err.response?.status === 401) {
+      //   // 401 = unauthorized
+      //   setErrMsg('Unauthorized')
+      // } else {
+      //   setErrMsg('Login Attempt Failed')
+      // }
       errRef.current.focus()
     }
 
