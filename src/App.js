@@ -25,7 +25,6 @@ const App = () => {
   const openLogin = () => {
     setPlants([])
     setRegisterCheck(false)
-    setInfoPlants(false)
     setLoginCheck(true)
   }
   const openRegister = () => {
