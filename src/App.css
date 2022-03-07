@@ -1,6 +1,7 @@
 * {
   text-align: center;
   background-color: #DDE5B6;
+  font-family: 'Dosis', sans-serif;
 }
 /* button styling */
 button {
@@ -21,6 +22,7 @@ button {
  border: solid #A98467 4px;
  text-decoration: none;
  margin: 0em 1em;
+ font-family: 'Dosis', sans-serif;
 }
 
 button:hover {
