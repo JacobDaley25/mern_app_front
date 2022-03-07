@@ -15,6 +15,7 @@ const App = () => {
   const [registerCheck, setRegisterCheck] = useState(false)
   const [loginCheck, setLoginCheck] = useState(false)
   const [homeCheck, setHomeCheck] = useState(false)
+  const user = useContext(UserContext)
 
 
   useEffect(()=>{

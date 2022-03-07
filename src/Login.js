@@ -1,9 +1,11 @@
 import {createContext, useRef, useState, useEffect, useContext, useMemo} from 'react'
 import AuthContext from "./context/AuthProvider"
-import './App.js'
-import './Register'
+import App from './App.js'
+import Register from './Register'
 import axios from 'axios'
 const LOGIN_URL = '/auth'
+
+const UserContext = createContext()
 
 const Login = () => {
   const {setAuth} = useContext(AuthContext)
@@ -16,6 +18,7 @@ const Login = () => {
   const [errMsg, setErrMsg] = useState('')
   const [success, setSuccess] = useState(false)
   const [currentUser, setCurrentUser] = useState('')
+  const [registerCheck, setRegisterCheck]=useState(false)
   const value = useMemo(
     () => ({currentUser, setCurrentUser}),
     [currentUser]
@@ -29,6 +32,13 @@ const Login = () => {
     setErrMsg('')
   }, [user, pwd])
 
+  const openRegister = () => {
+    setRegisterCheck(true)
+  }
+
+  const registerClose = () => {
+    setRegisterCheck(false)
+  }
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -68,13 +78,13 @@ const Login = () => {
   return (
     <>
       {success ? (
+          <UserContext.Provider value={currentUser}>
         <section>
-          <h1>You are now logged in!</h1>
-          <br/>
-          <p>
-            <a href="/">Go to Home</a>
-          </p>
+          <h1>{`You are now logged in! Welcome ${currentUser}`} </h1>
         </section>
+        <App user={currentUser} />
+        </UserContext.Provider>
+
       ) : (
     <section>
       <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
@@ -105,8 +115,11 @@ const Login = () => {
           <p>
             Need an Account?<br/>
             <span className="line">
-              {}
-              <a href="#">Sign Up</a>
+              <button onClick={openRegister}>Sign Up!</button>
+              {registerCheck ?  <>
+                <Register />
+                <button onClick={registerClose}>Close Register</button>
+                </> : null}
             </span>
           </p>
         </section>
