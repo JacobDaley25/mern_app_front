@@ -19,22 +19,17 @@ const App = () => {
   const user = Login.currentUser
 
 
-  useEffect(()=>{
-    axios.get('https://plantwateringapi.herokuapp.com/plants')
-      .then((response)=>{
-        setPlants(response.data)
-    })
-  }, [])
+useEffect(()=>{
+  gotoHome()
+}, [])
 const showPlants = () => {
+  setRegisterCheck(false)
+  setHomeCheck(false)
+  setLoginCheck(false)
   axios.get('https://plantwateringapi.herokuapp.com/plants').then((response)=>{
-    if (response.data.username === Login.currentUser){
       setPlants(response.data)
-    }else {
-      setPlants([])
-    }
+
   })
-
-
 }
   const openLogin = () => {
     setPlants([])
@@ -49,15 +44,11 @@ const showPlants = () => {
     setHomeCheck(false)
   }
   const gotoHome = () => {
+    setPlants([])
     setInfoPlants([])
     setRegisterCheck(false)
     setLoginCheck(false)
     setHomeCheck(true)
-    axios
-      .get('https://plantwateringapi.herokuapp.com/plants')
-      .then((response)=>{
-        setPlants(response.data)
-      })
   }
   const showPlantInfo = () => {
     setPlants([])
@@ -104,7 +95,7 @@ const showPlants = () => {
             })
       })
   }
-
+  
   const handleToggleWatered = (plantData) => {
     axios
       .put(`https://plantwateringapi.herokuapp.com/plants/${plantData._id}`,
@@ -152,6 +143,7 @@ const showPlants = () => {
       <button onClick={openRegister}> Sign Up </button>
       <button onClick={openLogin}>Login!</button>
       <button onClick={showPlantInfo}>Plant Info</button>
+      <button onClick={showPlants}>My Plants!</button>
       <button onClick={gotoHome}>Home</button>
       <button onClick={ (event) => {
         changeNewCheck(plants)}}>Add A New Plant</button>
@@ -170,7 +162,17 @@ const showPlants = () => {
       }
     </section>
     <section>
-    {homeCheck ? (<h2>Plants In My Garden</h2>): null}
+    {homeCheck ? (<div>
+      <h1>Why Use Us?</h1>
+      <h2>The Importance</h2>
+      <p>Without water, your plants will die simple as that. On the other hand, too much water, and again, you'll find yourself with some dead plants. To create the perfect reminder program, we have set-up Plant₂0</p>
+      <aside>
+      <img src='https://www.gardeningknowhow.com/wp-content/uploads/2008/05/water-plants-400x300.jpg' />
+      </aside>
+      <h2>How to Water Your Plants</h2>
+      <p>Each plant needs a different amount of water. That's the first thing you'll have to consider. A cacti will never need as much water as a Tomato plant. In the future, we will be integrating a feature that allows the user to track how long it's been since they've last watered the plant, as well as automatically switching back to unwatered after X amount of days depending on plant species.</p>
+      <p2> for more info on watering plants head to <a href='https://www.longfield-gardens.com/article/How-to-Water-Your-Plants'>How to Water your plants</a></p2>
+  </div>  ): null}
     <div className="cardgrid">
       {
 
