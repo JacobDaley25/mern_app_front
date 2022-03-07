@@ -1,8 +1,6 @@
 import {useRef, useState, useEffect, useContext} from 'react'
 import AuthContext from "./context/AuthProvider"
-import './App.js'
-import './Register'
-
+import App from './App'
 import axios from 'axios'
 const LOGIN_URL = '/auth'
 

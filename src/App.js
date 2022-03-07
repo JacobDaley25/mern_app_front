@@ -14,6 +14,8 @@ const App = () => {
   const [infoPlants, setInfoPlants] = useState([])
   const [registerCheck, setRegisterCheck] = useState(false)
   const [loginCheck, setLoginCheck] = useState(false)
+  const [homeCheck, setHomeCheck] = useState(false)
+
 
   useEffect(()=>{
     axios.get('https://plantwateringapi.herokuapp.com/plants')
@@ -26,16 +28,19 @@ const App = () => {
     setPlants([])
     setRegisterCheck(false)
     setLoginCheck(true)
+    setHomeCheck(false)
   }
   const openRegister = () => {
     setPlants([])
     setLoginCheck(false)
     setRegisterCheck(true)
+    setHomeCheck(false)
   }
   const gotoHome = () => {
     setInfoPlants([])
     setRegisterCheck(false)
     setLoginCheck(false)
+    setHomeCheck(true)
     axios
       .get('https://plantwateringapi.herokuapp.com/plants')
       .then((response)=>{
@@ -46,6 +51,7 @@ const App = () => {
     setPlants([])
     setRegisterCheck(false)
     setLoginCheck(false)
+    setHomeCheck(false)
     axios
       .get('growstuff.org/crops.json')
       .then((response)=>{
@@ -148,7 +154,7 @@ const App = () => {
       }
     </section>
     <section>
-    <h2>Plants In My Garden</h2>
+    {homeCheck ? (<h2>Plants In My Garden</h2>): null}
     <div className="cardgrid">
       {
 
