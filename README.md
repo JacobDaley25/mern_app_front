@@ -13,9 +13,9 @@ showing text when hovering over Image
 
 
 // SOURCES //
-// icons: //
+// icons:
 https://techstacker.com/display-text-on-hover-with-html/
-// user authentication: //
+// user authentication:
 https://www.youtube.com/watch?v=X3qyxo_UTR4
-// all CSS: // 
+// all CSS:
 https://www.w3schools.com/cssref/
