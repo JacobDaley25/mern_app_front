@@ -1,9 +1,8 @@
 import './App.css';
-import {useMemo, useContext, useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import axios from 'axios'
 import Register from './Register'
 import Login from './Login'
-import UserContext from './Login.js'
 
 const App = () => {
   const [newName, setNewName] = useState('')
@@ -132,7 +131,6 @@ const App = () => {
   }
 
   return (
-    <>
     <div>
     <h1>Plant₂0</h1>
     <section>
@@ -142,7 +140,7 @@ const App = () => {
       <button onClick={gotoHome}>Home</button>
       <button onClick={ (event) => {
         changeNewCheck(plants)}}>Add A New Plant</button>
-        {registerCheck ? (<Register />): null}
+        {registerCheck ? (<Register />):null}
         {loginCheck ? (<Login />):null}
       {newCheck ? (<form className="form" onSubmit={handleNewFormSubmit}>
         Name: <input type="text" onChange={handleNewNameChange}/><br/>
@@ -156,7 +154,7 @@ const App = () => {
       }
     </section>
     <section>
-    {homeCheck ? (<h2>Plants In My Garden</h2>):null}
+    {homeCheck ? (<h2>Plants In My Garden</h2>): null}
     <div className="cardgrid">
       {
 
@@ -181,7 +179,7 @@ const App = () => {
       </div>
     </section>
   </div>
-  </>
+
 )}
 
 export default App
