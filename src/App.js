@@ -1,8 +1,9 @@
 import './App.css';
-import {useState, useEffect} from 'react'
+import {useMemo, useContext, useState, useEffect} from 'react'
 import axios from 'axios'
 import Register from './Register'
 import Login from './Login'
+import UserContext from './Login.js'
 
 const App = () => {
   const [newName, setNewName] = useState('')
@@ -14,6 +15,9 @@ const App = () => {
   const [infoPlants, setInfoPlants] = useState([])
   const [registerCheck, setRegisterCheck] = useState(false)
   const [loginCheck, setLoginCheck] = useState(false)
+  
+  const [homeCheck, setHomeCheck] = useState(false)
+
 
   useEffect(()=>{
     axios.get('https://plantwateringapi.herokuapp.com/plants')
@@ -26,16 +30,19 @@ const App = () => {
     setPlants([])
     setRegisterCheck(false)
     setLoginCheck(true)
+    setHomeCheck(false)
   }
   const openRegister = () => {
     setPlants([])
     setLoginCheck(false)
     setRegisterCheck(true)
+    setHomeCheck(false)
   }
   const gotoHome = () => {
     setInfoPlants([])
     setRegisterCheck(false)
     setLoginCheck(false)
+    setHomeCheck(true)
     axios
       .get('https://plantwateringapi.herokuapp.com/plants')
       .then((response)=>{
@@ -46,6 +53,7 @@ const App = () => {
     setPlants([])
     setRegisterCheck(false)
     setLoginCheck(false)
+    setHomeCheck(false)
     axios
       .get('growstuff.org/crops.json')
       .then((response)=>{
@@ -124,17 +132,18 @@ const App = () => {
   }
 
   return (
+    <>
     <div>
     <h1>Plant₂0</h1>
     <section>
-      <h2></h2>
+
       <button onClick={openRegister}> Sign Up </button>
       <button onClick={openLogin}>Login!</button>
       <button onClick={showPlantInfo}>Plant Info</button>
       <button onClick={gotoHome}>Home</button>
       <button onClick={ (event) => {
         changeNewCheck(plants)}}>Add A New Plant</button>
-        {registerCheck ? (<Register />):null}
+        {registerCheck ? (<Register />): null}
         {loginCheck ? (<Login />):null}
       {newCheck ? (<form className="form" onSubmit={handleNewFormSubmit}>
         Name: <input type="text" onChange={handleNewNameChange}/><br/>
@@ -148,7 +157,7 @@ const App = () => {
       }
     </section>
     <section>
-    <h2>Plants In My Garden</h2>
+    {homeCheck ? (<h2>Plants in my Garden</h2>): null}
     <div className="cardgrid">
       {
 
@@ -173,7 +182,7 @@ const App = () => {
       </div>
     </section>
   </div>
-
+  </>
 )}
 
 export default App

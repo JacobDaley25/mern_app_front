@@ -6,13 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import Register from './Register'
 import Login from './Login'
 import { AuthProvider } from './context/AuthProvider'
+import UserContext from './Login.js'
 
 ReactDOM.render(
   <React.StrictMode>
 
     <App />
 
-    
+
   </React.StrictMode>,
   document.getElementById('root')
 );

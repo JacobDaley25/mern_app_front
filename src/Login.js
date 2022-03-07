@@ -1,6 +1,6 @@
-import {useRef, useState, useEffect, useContext} from 'react'
+import {createContext, useRef, useState, useEffect, useContext, useMemo} from 'react'
 import AuthContext from "./context/AuthProvider"
-
+import App from './App'
 import axios from 'axios'
 const LOGIN_URL = '/auth'
 
@@ -14,6 +14,11 @@ const Login = () => {
   const [pwd, setPwd] = useState('')
   const [errMsg, setErrMsg] = useState('')
   const [success, setSuccess] = useState(false)
+  const [currentUser, setCurrentUser] = useState('')
+  const value = useMemo(
+    () => ({currentUser, setCurrentUser}),
+    [currentUser]
+  )
 
   useEffect(() => {
     userRef.current.focus()
@@ -36,10 +41,11 @@ const Login = () => {
       console.log(JSON.stringify(response?.data));
         // console.log(JSON.stringify(response));
 
-      
+
       setUser('')
       setPwd('')
       setSuccess(true)
+      setCurrentUser(user)
     } catch (err) {
       // if (!err?.response) {
       //           setErrMsg('No Server Response');
