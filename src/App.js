@@ -159,9 +159,9 @@ const App = () => {
             <p className="textdata" onClick={ (event)=>{ handleToggleWatered(plant) }}>
             {
               (plant.wasWatered)?
-                'needs water'
+                <img className="needWater" src='https://cdn-icons-png.flaticon.com/512/2432/2432442.png'></img>
                 :
-                'does not need water'
+                <img className="needWater" src='https://cdn-icons-png.flaticon.com/512/1312/1312442.png'></img>
             } <br/>
             </p>
             <img className="plantimg" src={plant.image}/><br/>
