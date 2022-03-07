@@ -16,6 +16,7 @@ const App = () => {
   const [registerCheck, setRegisterCheck] = useState(false)
   const [loginCheck, setLoginCheck] = useState(false)
   const [homeCheck, setHomeCheck] = useState(false)
+  const user = useContext(UserContext)
 
 
   useEffect(()=>{
@@ -135,7 +136,6 @@ const App = () => {
     <div>
     <h1>Plant₂0</h1>
     <section>
-
       <button onClick={openRegister}> Sign Up </button>
       <button onClick={openLogin}>Login!</button>
       <button onClick={showPlantInfo}>Plant Info</button>

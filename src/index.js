@@ -11,7 +11,7 @@ import UserContext from './Login.js'
 ReactDOM.render(
   <React.StrictMode>
 
-    <App />
+    <Login />
 
 
   </React.StrictMode>,
