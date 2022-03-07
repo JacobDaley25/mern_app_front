@@ -15,7 +15,6 @@ const App = () => {
   const [infoPlants, setInfoPlants] = useState([])
   const [registerCheck, setRegisterCheck] = useState(false)
   const [loginCheck, setLoginCheck] = useState(false)
-  
   const [homeCheck, setHomeCheck] = useState(false)
 
 
@@ -157,7 +156,7 @@ const App = () => {
       }
     </section>
     <section>
-    {homeCheck ? (<h2>Plants in my Garden</h2>): null}
+
     <div className="cardgrid">
       {
 

@@ -1,12 +1,7 @@
 import {createContext, useRef, useState, useEffect, useContext, useMemo} from 'react'
 import AuthContext from "./context/AuthProvider"
-<<<<<<< HEAD
-import App from './App'
-=======
 import './App.js'
 import './Register'
-
->>>>>>> 544f8174bed94121abc0778acb1a3a992130ea1e
 import axios from 'axios'
 const LOGIN_URL = '/auth'
 
