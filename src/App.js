@@ -95,7 +95,7 @@ const showPlants = () => {
             })
       })
   }
-  
+
   const handleToggleWatered = (plantData) => {
     axios
       .put(`https://plantwateringapi.herokuapp.com/plants/${plantData._id}`,
@@ -197,6 +197,7 @@ const showPlants = () => {
       }
       </div>
     </section>
+    <p>Created by Brian and Mack EST:Mar 2022</p>
   </div>
 )}
 
