@@ -156,7 +156,7 @@ const App = () => {
       }
     </section>
     <section>
-
+    {homeCheck ? (<h2>Plants In My Garden</h2>):null}
     <div className="cardgrid">
       {
 
