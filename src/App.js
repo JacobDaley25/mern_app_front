@@ -16,7 +16,7 @@ const App = () => {
   const [registerCheck, setRegisterCheck] = useState(false)
   const [loginCheck, setLoginCheck] = useState(false)
   const [homeCheck, setHomeCheck] = useState(false)
-  const user = useContext(UserContext)
+  const user = Login.currentUser
 
 
   useEffect(()=>{
@@ -25,7 +25,17 @@ const App = () => {
         setPlants(response.data)
     })
   }, [])
+const showPlants = () => {
+  axios.get('https://plantwateringapi.herokuapp.com/plants').then((response)=>{
+    if (response.data.username === Login.currentUser){
+      setPlants(response.data)
+    }else {
+      setPlants([])
+    }
+  })
 
+
+}
   const openLogin = () => {
     setPlants([])
     setRegisterCheck(false)
@@ -66,6 +76,7 @@ const App = () => {
     axios.post(
       'https://plantwateringapi.herokuapp.com/plants',
       {
+        username: user,
         name: newName,
         image: newImage,
         description: newDescription,
@@ -75,6 +86,9 @@ const App = () => {
           .get('https://plantwateringapi.herokuapp.com/plants')
           .then((response)=>{
             setPlants(response.data)
+            setNewName('')
+            setNewImage('')
+            setNewDescription('')
         })
     })
   }
@@ -144,6 +158,7 @@ const App = () => {
         {registerCheck ? (<Register />):null}
         {loginCheck ? (<Login />):null}
       {newCheck ? (<form className="form" onSubmit={handleNewFormSubmit}>
+        Username: <input type='text' value={user}/><br/>
         Name: <input type="text" onChange={handleNewNameChange}/><br/>
         Image: <input type="text" onChange={handleNewImageChange}/><br/>
         Description: <input type="text" onChange={handleNewDescriptionChange}/><br/>
@@ -161,6 +176,7 @@ const App = () => {
 
         plants.map((plant)=>{
           return<div className="plantcard" key={plant._id}>
+            <h3 className='postedBy'>{plant.username}</h3>
             <h3 className="textdata">{plant.name}</h3>
             <p className="description">{plant.description}</p>
             <p className="textdata" onClick={ (event)=>{ handleToggleWatered(plant) }}>
@@ -180,7 +196,6 @@ const App = () => {
       </div>
     </section>
   </div>
-
 )}
 
 export default App

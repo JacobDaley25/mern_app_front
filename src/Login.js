@@ -5,7 +5,7 @@ import Register from './Register'
 import axios from 'axios'
 const LOGIN_URL = '/auth'
 
-const UserContext = createContext()
+const UserContext = createContext('')
 
 const Login = () => {
   const {setAuth} = useContext(AuthContext)
@@ -77,14 +77,13 @@ const Login = () => {
 
   return (
     <>
+
       {success ? (
-          <UserContext.Provider value={currentUser}>
+
         <section>
           <h1>{`You are now logged in! Welcome ${currentUser}`} </h1>
+            <App user={currentUser} />
         </section>
-        <App user={currentUser} />
-        </UserContext.Provider>
-
       ) : (
 
     <section>
@@ -127,6 +126,7 @@ const Login = () => {
           </p>
         </section>
       )}
+
     </>
   )
 }
