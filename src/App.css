@@ -114,17 +114,16 @@ input[type=submit]:hover {
   background-color: #F0EAD2;
 }
 
+.plantimg:hover {
+  filter:grayscale();
+}
+
 .needWater {
   height: 100%;
   width: 30%;
   background-color: #F0EAD2;
 }
 
-.hide {
-  display: none;
-}
-
-.needWater:hover + .hide {
-  display: block;
-  font-size: 0.5em;
+.needWater:hover {
+  transform: scale(1.25)
 }
