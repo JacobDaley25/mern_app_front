@@ -86,8 +86,11 @@ const Login = () => {
         </UserContext.Provider>
 
       ) : (
+
     <section>
       <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+        <h1> Welcome to Plant₂0!</h1>
+        <h2> Please sign in or create an account!</h2>
       <h1>Sign In</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username: </label>
@@ -100,7 +103,7 @@ const Login = () => {
           value={user}
           required
         />
-
+        <br />
         <label htmlFor="password">Password: </label>
         <input
           type="password"
@@ -109,7 +112,7 @@ const Login = () => {
           value={pwd}
           required
         />
-
+        <br />
         <button>Sign In</button>
       </form>
           <p>
