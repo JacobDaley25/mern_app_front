@@ -95,7 +95,7 @@ input[type=submit]:hover {
 .plantcard {
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 450px;
   width: 20%;
   margin: 3em;
   box-shadow: 5px 5px 15px 5px #000000;
@@ -112,10 +112,19 @@ input[type=submit]:hover {
   padding-bottom: 1em;
   object-fit: contain;
   background-color: #F0EAD2;
-  /* box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.39);
-  border: 1px solid grey; */
 }
 
-.plantimg {
+.needWater {
+  height: 100%;
+  width: 30%;
+  background-color: #F0EAD2;
+}
 
+.hide {
+  display: none;
+}
+
+.needWater:hover + .hide {
+  display: block;
+  font-size: 0.5em;
 }

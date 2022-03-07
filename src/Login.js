@@ -1,6 +1,12 @@
 import {createContext, useRef, useState, useEffect, useContext, useMemo} from 'react'
 import AuthContext from "./context/AuthProvider"
+<<<<<<< HEAD
 import App from './App'
+=======
+import './App.js'
+import './Register'
+
+>>>>>>> 544f8174bed94121abc0778acb1a3a992130ea1e
 import axios from 'axios'
 const LOGIN_URL = '/auth'
 
@@ -71,7 +77,7 @@ const Login = () => {
           <h1>You are now logged in!</h1>
           <br/>
           <p>
-            <a href="#">Go to Home</a>
+            <a href="/">Go to Home</a>
           </p>
         </section>
       ) : (
