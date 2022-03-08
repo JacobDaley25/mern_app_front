@@ -18,6 +18,7 @@ const App = (props) => {
   const [homeCheck, setHomeCheck] = useState(false)
   const [profileCheck, setProfileCheck] = useState(false)
   const [infoCheck, setInfoCheck] = useState(false)
+  const [buildCheck, setBuildCheck] = useState(false)
 
 
 
@@ -26,12 +27,21 @@ useEffect(()=>{
   gotoHome()
 }, [])
 
+const showBuilds = () => {
+  setProfileCheck(false)
+  setRegisterCheck(false)
+  setHomeCheck(false)
+  setInfoCheck(false)
+  setBuildCheck(true)
+}
+
 const showPlants = () => {
   setProfileCheck(true)
   setRegisterCheck(false)
   setHomeCheck(false)
   setLoginCheck(false)
   setInfoCheck(false)
+  setBuildCheck(false)
   axios.get('https://plantwateringapi.herokuapp.com/plants').then((response)=>{
       setPlants(response.data)
 
@@ -44,6 +54,7 @@ const showPlants = () => {
     setHomeCheck(false)
     setProfileCheck(false)
     setInfoCheck(false)
+    setBuildCheck(false)
   }
   const openRegister = () => {
     setPlants([])
@@ -52,6 +63,7 @@ const showPlants = () => {
     setHomeCheck(false)
     setProfileCheck(false)
     setInfoCheck(false)
+    setBuildCheck(false)
   }
   const gotoHome = () => {
     setPlants([])
@@ -61,6 +73,7 @@ const showPlants = () => {
     setHomeCheck(true)
     setProfileCheck(false)
     setInfoCheck(false)
+    setBuildCheck(false)
   }
   const showPlantInfo = () => {
     setPlants([])
@@ -69,7 +82,7 @@ const showPlants = () => {
     setHomeCheck(false)
     setProfileCheck(false)
     setInfoCheck(true)
-
+    setBuildCheck(false)
   }
   const handleNewFormSubmit = (event) => {
     event.preventDefault();
@@ -151,7 +164,7 @@ const showPlants = () => {
     <h1>Hi there, {props.user} </h1>
     <section>
     <nav>
-      <button>Fun Builds</button>
+      <button onClick={showBuilds}>Fun Builds</button>
       <button onClick={showPlantInfo}>Plant Info</button>
       <button onClick={showPlants}>My Plants!</button>
       <button onClick={gotoHome}>Home</button>
@@ -174,6 +187,21 @@ const showPlants = () => {
       }
     </section>
     <section>
+    {buildCheck ? (<div className='build-div'>
+  <h1>Fun Builds</h1>
+  <div className='video-responsive'>
+<iframe
+  width='400'
+  height='480'
+  src='https://www.youtube.com/watch?v=s6iHH5GwWWg'
+  frameBorder='0'
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+  title='embedded youtube'
+  />
+  </div>
+  <a href='https://www.youtube.com/watch?v=s6iHH5GwWWg'>If Embedded Video Doesn't Work Click Here</a>
+  </div>):null}
     {infoCheck ? (<div className='info-div'>
     <h1>What are the best things I can do for my Plants?</h1>
     <h2>1. Good Soil</h2>
