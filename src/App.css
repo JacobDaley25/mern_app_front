@@ -111,7 +111,7 @@ input[type=submit]:hover {
 .plantcard {
   display: flex;
   flex-direction: column;
-  height: 450px;
+  height: 30%;
   width: 20%;
   margin: 3em;
   box-shadow: 5px 5px 15px 5px #000000;
@@ -142,4 +142,8 @@ input[type=submit]:hover {
 
 .needWater:hover {
   transform: scale(1.25)
+}
+
+.postedBy {
+  background-color: #F0EAD2;
 }
