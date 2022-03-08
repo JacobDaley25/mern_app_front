@@ -190,7 +190,7 @@ const showPlants = () => {
 
         plants.filter(plants=> plants.username === props.user).map((plant)=>{
           return<div className="plantcard" key={plant._id}>
-            <h3 className='postedBy'>{plant.username}</h3>
+            <p className='postedBy'>Posted By: {plant.username}</p>
             <h3 className="textdata">{plant.name}</h3>
             <p className="description">{plant.description}</p>
             <p className="textdata" onClick={ (event)=>{ handleToggleWatered(plant) }}>
