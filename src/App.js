@@ -194,7 +194,7 @@ const showPlants = () => {
 <iframe
   width='400'
   height='480'
-  url='https://www.youtube.com/watch?v=s6iHH5GwWWg'
+  src='https://www.youtube.com/watch?v=s6iHH5GwWWg'
   frameBorder='0'
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowFullScreen
