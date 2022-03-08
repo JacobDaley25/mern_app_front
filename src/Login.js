@@ -51,12 +51,13 @@ const Login = () => {
       )
       console.log(JSON.stringify(response?.data));
         // console.log(JSON.stringify(response));
-
+      if (response.data.username!==user){
+        setErrMsg('Username Does not exist')
+      }else{
       setCurrentUser(user)
-
       setPwd('')
       setSuccess(true)
-
+      }
     } catch (err) {
       if (!err?.response) {
                 setErrMsg('No Server Response');
