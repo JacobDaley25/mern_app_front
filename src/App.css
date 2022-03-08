@@ -3,6 +3,64 @@
   background-color: #DDE5B6;
   font-family: 'Dosis', sans-serif;
 }
+ul{
+  list-style: none;
+}
+.info-div{
+  margin: 25px;
+  border-style: solid;
+  border-color: #6C584C;
+  padding: 15px;
+
+
+}
+.soil-rec1 a{
+  padding:15px;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-right: 50px;
+}
+.soil-rec1 img{
+  height: 400px;
+  width:400px;
+  margin-right: 25%;
+  margin-left: 23%;
+  margin-bottom: 5%;
+  margin-top:5%;
+}
+.soil-rec2 img{
+  height: 400px;
+  width:400px;
+  margin-right: 25%;
+  margin-left: 23%;
+  margin-bottom: 5%;
+  margin-top:5%;
+}
+.soil-rec3 img{
+  height: 400px;
+  width:400px;
+  margin-right: 25%;
+  margin-left: 23%;
+  margin-bottom: 5%;
+  margin-top:5%;
+}
+.soil-rec4 img{
+  height: 400px;
+  width:400px;
+  margin-right: 25%;
+  margin-left: 23%;
+  margin-bottom: 5%;
+  margin-top:5%;
+}
+.water-rec img{
+  height: 400px;
+  width:400px;
+  margin-right: 25%;
+  margin-left: 23%;
+  margin-bottom: 5%;
+  margin-top:5%;
+}
 .home-div{
   margin: 25px;
   border-style: solid;

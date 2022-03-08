@@ -17,6 +17,7 @@ const App = (props) => {
   const [loginCheck, setLoginCheck] = useState(false)
   const [homeCheck, setHomeCheck] = useState(false)
   const [profileCheck, setProfileCheck] = useState(false)
+  const [infoCheck, setInfoCheck] = useState(false)
 
 
 
@@ -30,6 +31,7 @@ const showPlants = () => {
   setRegisterCheck(false)
   setHomeCheck(false)
   setLoginCheck(false)
+  setInfoCheck(false)
   axios.get('https://plantwateringapi.herokuapp.com/plants').then((response)=>{
       setPlants(response.data)
 
@@ -41,6 +43,7 @@ const showPlants = () => {
     setLoginCheck(true)
     setHomeCheck(false)
     setProfileCheck(false)
+    setInfoCheck(false)
   }
   const openRegister = () => {
     setPlants([])
@@ -48,6 +51,7 @@ const showPlants = () => {
     setRegisterCheck(true)
     setHomeCheck(false)
     setProfileCheck(false)
+    setInfoCheck(false)
   }
   const gotoHome = () => {
     setPlants([])
@@ -56,6 +60,7 @@ const showPlants = () => {
     setLoginCheck(false)
     setHomeCheck(true)
     setProfileCheck(false)
+    setInfoCheck(false)
   }
   const showPlantInfo = () => {
     setPlants([])
@@ -63,11 +68,7 @@ const showPlants = () => {
     setLoginCheck(false)
     setHomeCheck(false)
     setProfileCheck(false)
-    axios
-      .get('growstuff.org/crops.json')
-      .then((response)=>{
-        setInfoPlants(response.data)
-      })
+    setInfoCheck(true)
 
   }
   const handleNewFormSubmit = (event) => {
@@ -166,13 +167,67 @@ const showPlants = () => {
         Image: <input type="text" onChange={handleNewImageChange}/><br/>
         Description: <input type="text" onChange={handleNewDescriptionChange}/><br/>
         Needs to be Watered?: <input type="checkbox" onChange={handleNewWateredChange}/><br/>
-        <input type="submit" value="Add Plant"/>
+        <input type="submit" value="Submit"/>
         <button onClick={ (event) => {
           closeNewCheck(plants)}}>Close Plant Form</button>
       </form>) : null
       }
     </section>
     <section>
+    {infoCheck ? (<div className='info-div'>
+    <h1>What are the best things I can do for my Plants?</h1>
+    <h2>1. Good Soil</h2>
+    <p>Despite what most people think, soil matters a lot for your plant to grow big and healthy. Miricle Grow also is not the <i>BEST</i> soil for your plants. It has time release fertilizer that may go off later than you need/want it to, and in turn, burn your plants.
+
+    Some of our most reccommended soils are:
+    <ul>
+    <li><card className='soil-rec1'><a href='https://foxfarm.com/product/happy-frog-potting-soil'>Fox Farms Happy Frog</a>
+    <img src='https://foxfarm.com/wp-content/uploads/2019/02/happyfrogpottingsoil_12qt-391x500.png' /></card>
+    </li>
+    <li><card className='soil-rec2'><a href='https://www.nehydro.com/nectar-for-the-gods-soil-4-1-5cf/'>Nectar of The Gods</a>
+    <img src='https://cdn11.bigcommerce.com/s-33e97/images/stencil/1280x1280/products/4656/5779/NOGSOIL__35560.1601657818.jpg?c=2' />
+    </card></li>
+    <li><card className='soil-rec3'><a href='https://foxfarm.com/product/ocean-forest-potting-soil'>Fox Farms Ocean Forest</a>
+    <img src='https://foxfarm.com/wp-content/uploads/2019/02/oceanforest_12qt-391x500.png' /></card>
+    </li>
+  <li><card className='soil-rec4'>  <a href='https://fatplantssandiego.com/product/premium-organic-cacti-and-succulent-soil-with-nutrients/'>Fat Plants San Deigo Succulent Soil</a>
+  <img src='https://fatplantssandiego.com/wp-content/uploads/2019/12/Soil-Bag-Front2-600x600-1.jpg' />
+  </card></li>
+  </ul>
+
+  These soils are extremely high quality, and will no doubt improve your luck on growing a flourishing garden.
+
+    </p>
+    <h2> 2. Good Watering Habits </h2>
+    <p>Although we've already linked to an information page on watering your plants, here we wanted to provide a product that's a solution to that problem on it's own. You will need different varients of this product for different kinds of plants, but the:</p>
+    <div className = 'water-rec'>
+    <h4><a href='https://blumat.com/en'>Blumat AutoWatering Systems</a></h4>
+    <img src='https://blumat.com/storage/app/media/classic/uber2.jpg' />
+    </div>
+    <p>provides an automated means to watering your plants the correct amount each day, even when you arent there to tend to them!</p>
+    <h2> 3. A Perfect Environment </h2>
+    <p>Although some plants <i>CAN</i> thrive on a windowsill, most need to have some sort of dialed in enviroment to really show off what they're capable of. In this part of our reccomendations, we are showing a product bundle to help you achieve this.
+    *Note: More "fun" versions of this build are available in the Fun tab.*
+    </p>
+    <h4><a href='https://www.spider-farmer.com/collections/grow-tent-kits/'>Spider Farmer Complete Packages</a></h4>
+    <img src='https://www.spider-farmer.com/wp-content/uploads/2022/02/Spider-Farmer-SF1000-SET--600x600.jpg' />
+    <p>Although some are on the more expensive side, theres practically nothing you <b>CAN'T</b> grow inside one of these things. Their kits come with:
+    <ul>
+      <li>A grow-light</li>
+      <li>Growing Tent</li>
+      <li>In-line Fan to control temp</li>
+      <li>De/Humidifier (controls both to have optimal humidity for your plants)</li>
+      <li>Timed Outlight to make sure your plants don't get too much light</li>
+      <li>And More!</li>
+    </ul>
+    its truely everything anyone who want's to grow anything year round could dream of.</p>
+
+</div>
+
+)
+
+
+  :null}
     {profileCheck ? (<button onClick={ (event) => {
       changeNewCheck(plants)}}>Add A New Plant</button>):null}
     {homeCheck ? (<div className='home-div'>
