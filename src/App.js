@@ -16,6 +16,7 @@ const App = (props) => {
   const [registerCheck, setRegisterCheck] = useState(false)
   const [loginCheck, setLoginCheck] = useState(false)
   const [homeCheck, setHomeCheck] = useState(false)
+  const [profileCheck, setProfileCheck] = useState(false)
 
 
 
@@ -23,7 +24,9 @@ const App = (props) => {
 useEffect(()=>{
   gotoHome()
 }, [])
+
 const showPlants = () => {
+  setProfileCheck(true)
   setRegisterCheck(false)
   setHomeCheck(false)
   setLoginCheck(false)
@@ -68,7 +71,7 @@ const showPlants = () => {
     axios.post(
       'https://plantwateringapi.herokuapp.com/plants',
       {
-        username: Login.currentUser,
+        username: props.user,
         name: newName,
         image: newImage,
         description: newDescription,
@@ -101,7 +104,6 @@ const showPlants = () => {
     axios
       .put(`https://plantwateringapi.herokuapp.com/plants/${plantData._id}`,
         {
-          username: props.user,
           name: plantData.name,
           image: plantData.image,
           description: plantData.description,
@@ -153,6 +155,7 @@ const showPlants = () => {
         changeNewCheck(plants)}}>Add A New Plant</button>
 
       </nav>
+
         {registerCheck ? (<Register />):null}
         {loginCheck ? (<Login />):null}
       {newCheck ? (<form className="form" onSubmit={handleNewFormSubmit}>
@@ -180,9 +183,12 @@ const showPlants = () => {
       <p2> for more info on watering plants head to <a href='https://www.longfield-gardens.com/article/How-to-Water-Your-Plants'>How to Water your plants</a></p2>
   </div>  ): null}
     <div className="cardgrid">
+
+
+
       {
 
-        plants.map((plant)=>{
+        plants.filter(plants=> plants.username === props.user).map((plant)=>{
           return<div className="plantcard" key={plant._id}>
             <h3 className='postedBy'>{plant.username}</h3>
             <h3 className="textdata">{plant.name}</h3>

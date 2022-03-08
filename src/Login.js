@@ -82,7 +82,6 @@ const Login = () => {
 
         <section>
         <UserContext.Provider value={{currentUser, setCurrentUser}}>
-          <h1>{`You are now logged in! Welcome ${currentUser}`} </h1>
             <App user={currentUser} />
           </UserContext.Provider>
         </section>
