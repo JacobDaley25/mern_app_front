@@ -146,8 +146,7 @@ const showPlants = () => {
     <h1>Hi there, {props.user} </h1>
     <section>
     <nav>
-      <button onClick={openRegister}> Sign Up </button>
-      <button onClick={openLogin}>Login!</button>
+      
       <button onClick={showPlantInfo}>Plant Info</button>
       <button onClick={showPlants}>My Plants!</button>
       <button onClick={gotoHome}>Home</button>
