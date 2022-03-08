@@ -3,6 +3,20 @@
   background-color: #DDE5B6;
   font-family: 'Dosis', sans-serif;
 }
+nav{
+  background-color: #ADC178;
+}
+.home-div{
+  margin: 25px;
+  border-style: solid;
+  border-color: #6C584C;
+  padding: 15px;
+}
+.home-div img {
+  border-style: solid;
+  border-color: #6C584C;
+  border-width: 10px;
+}
 /* button styling */
 button {
   background: #DDE5B6;

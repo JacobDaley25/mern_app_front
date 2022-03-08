@@ -1,11 +1,11 @@
 import './App.css';
-import {useContext, useState, useEffect} from 'react'
+import {useContext, useState, useEffect, useMemo} from 'react'
 import axios from 'axios'
 import Register from './Register'
 import Login from './Login'
 import UserContext from './Login.js'
 
-const App = () => {
+const App = (props) => {
   const [newName, setNewName] = useState('')
   const [newImage, setNewImage] = useState('')
   const [newDescription, setNewDescription] = useState('')
@@ -16,7 +16,8 @@ const App = () => {
   const [registerCheck, setRegisterCheck] = useState(false)
   const [loginCheck, setLoginCheck] = useState(false)
   const [homeCheck, setHomeCheck] = useState(false)
-  const user = Login.currentUser
+
+
 
 
 useEffect(()=>{
@@ -67,7 +68,7 @@ const showPlants = () => {
     axios.post(
       'https://plantwateringapi.herokuapp.com/plants',
       {
-        username: user,
+        username: Login.currentUser,
         name: newName,
         image: newImage,
         description: newDescription,
@@ -100,6 +101,7 @@ const showPlants = () => {
     axios
       .put(`https://plantwateringapi.herokuapp.com/plants/${plantData._id}`,
         {
+          username: props.user,
           name: plantData.name,
           image: plantData.image,
           description: plantData.description,
@@ -139,7 +141,9 @@ const showPlants = () => {
   return (
     <div>
     <h1>Plant₂0</h1>
+    <h1>Hi there, {props.user} </h1>
     <section>
+    <nav>
       <button onClick={openRegister}> Sign Up </button>
       <button onClick={openLogin}>Login!</button>
       <button onClick={showPlantInfo}>Plant Info</button>
@@ -147,10 +151,12 @@ const showPlants = () => {
       <button onClick={gotoHome}>Home</button>
       <button onClick={ (event) => {
         changeNewCheck(plants)}}>Add A New Plant</button>
+
+      </nav>
         {registerCheck ? (<Register />):null}
         {loginCheck ? (<Login />):null}
       {newCheck ? (<form className="form" onSubmit={handleNewFormSubmit}>
-        Username: <input type='text' value={user}/><br/>
+        Username: <input type='text' value={props.user}/><br/>
         Name: <input type="text" onChange={handleNewNameChange}/><br/>
         Image: <input type="text" onChange={handleNewImageChange}/><br/>
         Description: <input type="text" onChange={handleNewDescriptionChange}/><br/>
@@ -162,7 +168,7 @@ const showPlants = () => {
       }
     </section>
     <section>
-    {homeCheck ? (<div>
+    {homeCheck ? (<div className='home-div'>
       <h1>Why Use Us?</h1>
       <h2>The Importance</h2>
       <p>Without water, your plants will die simple as that. On the other hand, too much water, and again, you'll find yourself with some dead plants. To create the perfect reminder program, we have set-up Plant₂0</p>

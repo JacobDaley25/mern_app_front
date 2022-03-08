@@ -52,11 +52,11 @@ const Login = () => {
       console.log(JSON.stringify(response?.data));
         // console.log(JSON.stringify(response));
 
+      setCurrentUser(user)
 
-      setUser('')
       setPwd('')
       setSuccess(true)
-      setCurrentUser(user)
+
     } catch (err) {
       // if (!err?.response) {
       //           setErrMsg('No Server Response');
@@ -81,8 +81,10 @@ const Login = () => {
       {success ? (
 
         <section>
+        <UserContext.Provider value={{currentUser, setCurrentUser}}>
           <h1>{`You are now logged in! Welcome ${currentUser}`} </h1>
             <App user={currentUser} />
+          </UserContext.Provider>
         </section>
       ) : (
 
