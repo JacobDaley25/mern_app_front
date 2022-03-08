@@ -40,12 +40,14 @@ const showPlants = () => {
     setRegisterCheck(false)
     setLoginCheck(true)
     setHomeCheck(false)
+    setProfileCheck(false)
   }
   const openRegister = () => {
     setPlants([])
     setLoginCheck(false)
     setRegisterCheck(true)
     setHomeCheck(false)
+    setProfileCheck(false)
   }
   const gotoHome = () => {
     setPlants([])
@@ -53,12 +55,14 @@ const showPlants = () => {
     setRegisterCheck(false)
     setLoginCheck(false)
     setHomeCheck(true)
+    setProfileCheck(false)
   }
   const showPlantInfo = () => {
     setPlants([])
     setRegisterCheck(false)
     setLoginCheck(false)
     setHomeCheck(false)
+    setProfileCheck(false)
     axios
       .get('growstuff.org/crops.json')
       .then((response)=>{
@@ -146,12 +150,11 @@ const showPlants = () => {
     <h1>Hi there, {props.user} </h1>
     <section>
     <nav>
-      
+      <button>Fun Builds</button>
       <button onClick={showPlantInfo}>Plant Info</button>
       <button onClick={showPlants}>My Plants!</button>
       <button onClick={gotoHome}>Home</button>
-      <button onClick={ (event) => {
-        changeNewCheck(plants)}}>Add A New Plant</button>
+
 
       </nav>
 
@@ -170,6 +173,8 @@ const showPlants = () => {
       }
     </section>
     <section>
+    {profileCheck ? (<button onClick={ (event) => {
+      changeNewCheck(plants)}}>Add A New Plant</button>):null}
     {homeCheck ? (<div className='home-div'>
       <h1>Why Use Us?</h1>
       <h2>The Importance</h2>
