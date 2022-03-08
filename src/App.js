@@ -33,6 +33,7 @@ const showBuilds = () => {
   setHomeCheck(false)
   setInfoCheck(false)
   setBuildCheck(true)
+  setPlants([])
 }
 
 const showPlants = () => {
